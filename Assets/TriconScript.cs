@@ -37,7 +37,6 @@ public class TriconScript : MonoBehaviour
     private readonly Texture2D[] Textures = new Texture2D[3];
     private readonly Texture2D[] MergedTextures = new Texture2D[8];
     private int _currentDisplayValue = 7;
-    private readonly Coroutine[] _holdTimers = new Coroutine[2];
 
     private static readonly string[][] _moduleList = NewArray
     (
@@ -56,7 +55,7 @@ public class TriconScript : MonoBehaviour
         new string[] { "Semaphore", "Semaphore" },
         new string[] { "Switches", "switchModule" },
         new string[] { "Two Bits", "TwoBits" },
-        new string[] { "Word Sramble", "WordScrambleModule" },
+        new string[] { "Word Scramble", "WordScrambleModule" },
         new string[] { "Anagrams", "AnagramsModule" },
         new string[] { "Round Keypad", "KeypadV2" },
         new string[] { "Listening", "Listening" },
@@ -317,7 +316,7 @@ public class TriconScript : MonoBehaviour
         new string[] { "Light Bulbs", "LightBulbs" },
         new string[] { "1000 Words", "OneThousandWords" },
         new string[] { "Five Letter Words", "FiveLetterWords" },
-        new string[] { "Direcitonal Button", "directionalButton" },
+        new string[] { "Directional Button", "directionalButton" },
         new string[] { "...?", "punctuationMarks" },
         new string[] { "The Simpleton", "SimpleButton" },
         new string[] { "Wire Ordering", "kataWireOrdering" },
@@ -611,10 +610,7 @@ public class TriconScript : MonoBehaviour
         _moduleId = _moduleIdCounter++;
         IconFetch.Instance.WaitForFetch(OnFetched);
         for (int i = 0; i < ArrowSels.Length; i++)
-        {
             ArrowSels[i].OnInteract += ArrowPress(i);
-            ArrowSels[i].OnInteractEnded += ArrowRelease(i);
-        }
         SubmitSel.OnInteract += SubmitPress;
     }
 
@@ -633,7 +629,6 @@ public class TriconScript : MonoBehaviour
                 return false;
             }
             CycleDisplay(i);
-            _holdTimers[i] = StartCoroutine(ContinuousCycle(i));
             return false;
         };
     }
@@ -642,28 +637,6 @@ public class TriconScript : MonoBehaviour
     {
         _currentIx = dir == 1 ? ((_currentIx + 1) % _maxIx) : ((_currentIx + (_maxIx - 1)) % _maxIx);
         ModuleNameText.text = _moduleList[_displayIxs[_currentIx]][0];
-    }
-
-    private Action ArrowRelease(int i)
-    {
-        return delegate ()
-        {
-            Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonRelease, ArrowSels[i].transform);
-            if (_moduleSolved || !_readyToPress)
-                return;
-            if (_holdTimers[i] != null)
-                StopCoroutine(_holdTimers[i]);
-        };
-    }
-
-    private IEnumerator ContinuousCycle(int dir)
-    {
-        yield return new WaitForSeconds(0.5f);
-        while (true)
-        {
-            CycleDisplay(dir);
-            yield return new WaitForSeconds(0.075f);
-        }
     }
 
     private bool SubmitPress()
