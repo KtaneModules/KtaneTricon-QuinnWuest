@@ -14,7 +14,8 @@ MonoBehaviour:
   id: TriconModule
   title: Tricon
   author: Quinn Wuest
-  description: Module description
+  description: "Triple Blan Blast!\n\nMade by Quinn Wuest\n\n[url=https://ktane.timwi.de/HTML/Tricon.html]Manual
+    HTML[/url]\r\n[url=https://ktane.timwi.de/PDF/Tricon.pdf]Manual PDF[/url]"
   version: 1.0
   outputFolder: build
-  previewImage: {fileID: 2800000, guid: bd5c1f4881f57d54481b44e4c8a7779a, type: 3}
+  previewImage: {fileID: 2800000, guid: 3ec7ddc0c8baa5c4f9c961972dd40abe, type: 3}

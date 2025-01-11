@@ -490,11 +490,11 @@ public class TriconScript : MonoBehaviour
         new string[] { "Marco Polo", "marcoPolo" },
         new string[] { "Boomtar the Great", "boomtarTheGreat" },
         new string[] { "A Square", "ASquareModule" },
-        new string[] { "Look, Look Away", "lookLookaway" },
-        new string[] { "Untouchable", "untouchable" },
+        new string[] { "Look, Look Away", "lookLookAway" },
+        new string[] { "Untouchable", "untouchableModule" },
         new string[] { "Backdoor Hacking", "BackdoorHacking" },
         new string[] { "Finite Loop", "finiteLoop" },
-        new string[] { "Shape Fill", "ShapeFillModulee" },
+        new string[] { "Shape Fill", "ShapeFillModule" },
         new string[] { "Mister Softee", "misterSoftee" },
         new string[] { "Basegate", "basegate" },
         new string[] { "USA Cycle", "USACycle" },
@@ -511,7 +511,7 @@ public class TriconScript : MonoBehaviour
         new string[] { "Feature Cryptography", "featureCryptography" },
         new string[] { "Simon Smothers", "simonSmothers" },
         new string[] { "Simon's Statement", "simonsStatement" },
-        new string[] { "Three-Way Gates", "threeWayGates" },
+        new string[] { "Three-Way Gates", "threewayGates" },
         new string[] { "UIN(+L)", "UINpL" },
         new string[] { "Battle of Wits", "battleOfWits" },
         new string[] { "One Item One Meal", "oneitemOneMeal" },
@@ -564,7 +564,44 @@ public class TriconScript : MonoBehaviour
         new string[] { "Conditional Maze", "conditionalMaze" },
         new string[] { "3D Chess", "ThreeDimensionalChess" },
         new string[] { "Bad Bones", "badbones" },
-        new string[] { "Word Count", "wordCount" }
+        new string[] { "Word Count", "wordCount" },
+        new string[] { "Diamonds", "diamonds" },
+        new string[] { "Power Button", "powerButton" },
+        new string[] { "TAC", "TACModule" },
+        new string[] { "Reflection", "laserreflection" },
+        new string[] { "Synapse Says", "synapseSays" },
+        new string[] { "Simon Strands", "simonStrands" },
+        new string[] { "Keypass", "keypass" },
+        new string[] { "A-button-ing Mazes", "abuttoningMazes" },
+        new string[] { "Thirty Dollar Module", "ThirtyDollarModule" },
+        new string[] { "Game of Life 3D", "GSGameOfLife3D" },
+        new string[] { "Setting Charges", "settingCharges" },
+        new string[] { "White Elephant", "whiteElephant" },
+        new string[] { "The Teardrop", "theTeardrop" },
+        new string[] { "Emoji", "emoji" },
+        new string[] { "Soda", "soda" },
+        new string[] { "Ill Morse", "illMorse" },
+        new string[] { "Ducks", "ducks" },
+        new string[] { "Facets & Logic", "facetsAndLogic" },
+        new string[] { "Symmetry Shuffle", "symmetryShuffle" },
+        new string[] { "Binary Squares", "binarySquares" },
+        new string[] { "Normal Probability", "GSNormalProbability" },
+        new string[] { "Karnaugh Map", "karnaugh" },
+        new string[] { "Lying Buttons", "lyingButtons" },
+        new string[] { "Dyscalculator", "dyscalc" },
+        new string[] { "Logic Circuits", "LogicCircuits" },
+        new string[] { "Some Buttons", "someButtons" },
+        new string[] { "Four Corners", "fourCorners" },
+        new string[] { "Ball Dial", "ballDial" },
+        new string[] { "Breakers", "breakers" },
+        new string[] { "Scattershot", "scattershot" },
+        new string[] { "Grimm", "grimmModule" },
+        new string[] { "RGB Mixing", "RGBLedsBTBE" },
+        new string[] { "WAR", "WAR" },
+        new string[] { "Gerrymandering", "gerrymandering" },
+        new string[] { "Housecleaning", "housecleaningModule" },
+        new string[] { "Projective Set", "proset" },
+        new string[] { "Permuto", "permuto" }
     );
 
     private static T[] NewArray<T>(params T[] array) { return array; }
@@ -781,7 +818,7 @@ public class TriconScript : MonoBehaviour
     {
         if (!_readyToPress)
         {
-            yield return "sendtochaterror The module hasn't generated a display yet.";
+            yield return "sendtochaterror The module hasn't generated a display yet. Ignoring command.";
             yield break;
         }
         if (Regex.IsMatch(command, @"^\s*failsafe\s*", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
@@ -794,7 +831,7 @@ public class TriconScript : MonoBehaviour
             }
             else
             {
-                yield return "sendtochaterror The failsafe is not active.";
+                yield return "sendtochaterror The failsafe is not active. Ignoring command.";
                 yield break;
             }
         }
@@ -808,7 +845,7 @@ public class TriconScript : MonoBehaviour
         {
             if (cycleIx == _maxIx)
             {
-                yield return "sendtochaterror The module \"" + input + "\" was not found in the module list.";
+                yield return "sendtochaterror The module \"" + input + "\" was not found in the module list. Ignoring command.";
                 yield break;
             }
             ArrowSels[1].OnInteract();
