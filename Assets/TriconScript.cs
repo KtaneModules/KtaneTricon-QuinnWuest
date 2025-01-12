@@ -655,7 +655,7 @@ public class TriconScript : MonoBehaviour
         {
             if (_submittedIxs.Contains(_displayIxs[_currentIx]))
                 return false;
-            Debug.LogFormat("[Tricon #{0}] Correctly submitted #{1}.", _moduleId, _moduleList[_displayIxs[_currentIx]][0]);
+            Debug.LogFormat("[Tricon #{0}] Correctly submitted {1}.", _moduleId, _moduleList[_displayIxs[_currentIx]][0]);
             _submittedIxs.Add(_displayIxs[_currentIx]);
             for (int i = 0; i < _submittedIxs.Count; i++)
                 LedObjs[i].GetComponent<MeshRenderer>().material = LedMatGreen;
@@ -676,7 +676,7 @@ public class TriconScript : MonoBehaviour
         }
         else
         {
-            Debug.LogFormat("[Tricon #{0}] Incorrectly submitted #{1}. Strike.", _moduleId, _moduleList[_displayIxs[_currentIx]][0]);
+            Debug.LogFormat("[Tricon #{0}] Incorrectly submitted {1}. Strike.", _moduleId, _moduleList[_displayIxs[_currentIx]][0]);
             Module.HandleStrike();
         }
         return false;
@@ -814,7 +814,7 @@ public class TriconScript : MonoBehaviour
         var input = command.Substring(7).Trim();
         int cycleIx = 0;
         yield return null;
-        while (cycleIx < _maxIx && _moduleList[_displayIxs[_currentIx]][0].ToLowerInvariant() != input)
+        while (cycleIx <= _maxIx && _moduleList[_displayIxs[_currentIx]][0].ToLowerInvariant() != input)
         {
             if (cycleIx == _maxIx)
             {
