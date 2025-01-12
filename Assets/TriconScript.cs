@@ -385,7 +385,7 @@ public class TriconScript : MonoBehaviour
         new string[] { "h", "Averageh" },
         new string[] { "Quick Time Events", "xelQuickTimeEvents" },
         new string[] { "The Bioscanner", "TheBioscanner" },
-        new string[] { "Pixel Number Page", "PixelNumberBase" },
+        new string[] { "Pixel Number Base", "PixelNumberBase" },
         new string[] { "Logical Operators", "logicalOperators" },
         new string[] { "Even Or Odd", "evenOrOdd" },
         new string[] { "Digital Grid", "digitalGrid" },
