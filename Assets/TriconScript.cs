@@ -122,7 +122,7 @@ public class TriconScript : MonoBehaviour
         new string[] { "Mafia", "MafiaModule" },
         new string[] { "Flags", "FlagsModule" },
         new string[] { "Polyhedral Maze", "PolyhedralMazeModule" },
-        new string[] { "Symbolic Coordiantes", "symbolicCoordinates" },
+        new string[] { "Symbolic Coordinates", "symbolicCoordinates" },
         new string[] { "Poker", "Poker" },
         new string[] { "Poetry", "poetry" },
         new string[] { "Button Sequence", "buttonSequencesModule" },
@@ -600,7 +600,8 @@ public class TriconScript : MonoBehaviour
         new string[] { "Gerrymandering", "gerrymandering" },
         new string[] { "Housecleaning", "housecleaningModule" },
         new string[] { "Projective Set", "proset" },
-        new string[] { "Permuto", "permuto" }
+        new string[] { "Permuto", "permuto" },
+        new string[] { "Tricon", "TriconModule" }
     );
 
     private static T[] NewArray<T>(params T[] array) { return array; }
